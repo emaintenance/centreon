@@ -74,7 +74,7 @@ $form = new HTML_QuickForm('select_form', 'GET', 'main.php');
 $form->addElement('header', 'title', _("Set downtimes"));
 
 $tpl->assign('authorlabel', _("Alias"));
-$tpl->assign('authoralias', $centreon->user->get_alias());
+$tpl->assign('authoralias', $centreon->user->get_name());
 
 $form->addElement('textarea', 'comment', _("Comment"), array("rows"=>"5", "cols"=>"70", "id"=>"popupComment"));
 $form->setDefaults(array("comment" => sprintf(_("Downtime set by %s"), $centreon->user->alias)));
@@ -125,8 +125,8 @@ $chckbox[0]->setChecked(true);
 
 $chckbox2[] = $form->addElement('checkbox', 'downtimehostservice', _("Set downtimes on services attached to hosts"), "", array("id"=>"downtimehostservice"));
 $chckbox2[0]->setChecked(true);
-
-$form->addElement('hidden', 'author', $centreon->user->get_alias(), array("id"=>"author"));
+// /*** MOD EMAINTENANCE ***/
+$form->addElement('hidden', 'author', $centreon->user->get_name(), array("id"=>"author"));
 
 $form->addRule('comment', _("Comment is required"), 'required', '', 'client');
 $form->setJsWarnings(_("Invalid information entered"), _("Please correct these fields"));

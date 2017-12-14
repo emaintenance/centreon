@@ -34,6 +34,9 @@
  *
  */
 
+ // /*** MOD EMAINTENANCE ***/
+$portail_login = "https://portail.fr/";
+ 
 require_once realpath(dirname(__FILE__).'/../config/centreon.config.php');
 
 $etc = _CENTREON_ETC_;
@@ -108,6 +111,8 @@ if (isset($_GET["disconnect"])) {
 
         CentreonSession::restart();
     }
+	// /*** MOD EMAINTENANCE ***/
+	if (isset($_SERVER['REMOTE_USER'])) { header('Location: '.$portail_login); exit(); }
 }
 
 /*

@@ -1,4 +1,5 @@
 <?php
+$maintenance = 0;
 /*
  * Copyright 2005-2016 Centreon
  * Centreon is developped by : Julien Mathis and Romain Le Merlus under
@@ -47,6 +48,29 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
     <title>Centreon - IT & Network Monitoring</title>
     <link rel="shortcut icon" href="./img/favicon.ico"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<?php
+	// /*** MOD EMAINTENANCE ***/
+if ( date("H") < "19" )
+{
+    $h = 19 - date("H");
+    $s = $h * 3600;
+}
+else
+{
+    $s = 3600;
+}
+?>
+<?php
+        //$maintenance = 0;
+        if ( $maintenance == 1)
+        {
+        echo '<meta http-equiv="refresh" content="1; URL=maintenance.php">';
+        }
+
+?>
+
+<meta http-equiv="refresh" content="<?php echo $s;?>; URL=index.php?disconnect=2">
+
     <meta name="Generator" content="Centreon - Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved."/>
     <meta name="robots" content="index, nofollow"/>
 

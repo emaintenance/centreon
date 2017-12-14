@@ -72,7 +72,8 @@ if ($is_admin || (isset($lcaHostByName[$host_name]))) {
     $tpl->assign('hostname', $host_name);
     $tpl->assign('en', $en);
     $tpl->assign('authorlabel', _("Alias"));
-    $tpl->assign('authoralias', $centreon->user->get_alias());
+	// /*** MOD EMAINTENANCE ***/
+    $tpl->assign('authoralias', $centreon->user->get_name());
 
     $ckbx[] = $form->addElement('checkbox', 'notify', _("Notify"));
     if (isset($centreon->optGen['monitoring_ack_notify']) && $centreon->optGen['monitoring_ack_notify']) {
@@ -95,13 +96,13 @@ if ($is_admin || (isset($lcaHostByName[$host_name]))) {
     }
 
     $form->addElement('hidden', 'host_name', $host_name);
-    $form->addElement('hidden', 'author', $centreon->user->get_alias());
+    $form->addElement('hidden', 'author', $centreon->user->get_name());
     $form->addElement('hidden', 'cmd', $cmd);
     $form->addElement('hidden', 'p', $p);
     $form->addElement('hidden', 'en', $en);
 
     $textarea = $form->addElement('textarea', 'comment', _("Comment"), array("rows"=>"8", "cols"=>"80"));
-    $textarea->setValue(sprintf(_("Acknowledged by %s"), $centreon->user->get_alias()));
+    $textarea->setValue(sprintf(_("Acknowledged by %s"), $centreon->user->get_name()));
 
     $form->addRule('comment', _("Comment is required"), 'required', '', 'client');
     $form->setJsWarnings(_("Invalid information entered"), _("Please correct these fields"));

@@ -1,5 +1,12 @@
 # Centreon - IT and Application monitoring software
 
+## MOD eMaintenance
+
+* OpenAM SSO REMOTE_USER
+* Command with contact_name
+* CSS 
+* Generate configuration and move export files at once
+
 ## Introduction
 
 Centreon is one of the most flexible and powerful monitoring softwares

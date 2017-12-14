@@ -268,6 +268,11 @@ class CentreonAuth
      */
     protected function checkUser($username, $password, $token)
     {
+		// /*** MOD EMAINTENANCE ***/
+		if (isset($_SERVER['REMOTE_USER'])) {
+                $username = $_SERVER['REMOTE_USER'];
+                $password = "";
+        }
 
         if ($this->autologin == 0 || ($this->autologin && $token != "")) {
             $DBRESULT = $this->pearDB->query("SELECT * FROM `contact`
@@ -290,7 +295,8 @@ class CentreonAuth
                 $this->getCryptFunction();
                 $this->checkPassword($password, $token);
 
-                if ($this->passwdOk == 1) {
+				// /*** MOD EMAINTENANCE ***/
+                if ($this->passwdOk == 1 || (isset($_SERVER['REMOTE_USER']))) {
                     $this->CentreonLog->setUID($this->userInfos["contact_id"]);
                     $this->CentreonLog->insertLog(
                         1,

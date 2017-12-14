@@ -202,7 +202,9 @@ $obj->displayImageFlow();
 /**
  * Closing session
  */
-if (isset($_GET['akey'])) {
+ // /*** MOD EMAINTENANCE ***/
+//if (isset($_GET['akey'])) {
+if ((isset($_GET["token"]) || isset($_GET["akey"])) && isset($_GET['username'])) {
     $DBRESULT = $pearDB->prepare("DELETE FROM session WHERE session_id = ? AND user_id = (SELECT contact_id from contact where contact_autologin_key = ?)");
     $DBRESULT = $pearDB->execute($DBRESULT, array($mySessionId, $_GET['akey']));
 }

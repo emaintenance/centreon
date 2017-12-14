@@ -84,7 +84,8 @@ class CentreonExternalCommand
 
         if (!is_null($centreon)) {
             $this->userId = $centreon->user->get_id();
-            $this->userAlias = $centreon->user->get_alias();
+			// /*** MOD EMAINTENANCE ***/
+            $this->userAlias = $centreon->user->get_name();
         }
     }
 

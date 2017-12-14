@@ -68,7 +68,8 @@ $form->addElement('checkbox', 'move', _("Move Export Files"), null, array('id' =
 $form->addElement('checkbox', 'restart', _("Restart Monitoring Engine"), null, array('id' => 'nrestart'));
 $form->addElement('checkbox', 'postcmd', _('Post generation command'), null, array('id' => 'npostcmd'));
 $form->addElement('select', 'restart_mode', _("Method"), array(2 => _("Restart"), 1 => _("Reload")), array('id' => 'nrestart_mode', 'style' => 'width: 220px;'));
-$form->setDefaults(array('debug' => '1', 'gen' => '1', 'restart_mode' => '1'));
+// /*** MOD EMAINTENANCE ***/
+$form->setDefaults(array('debug' => '1', 'gen' => '1', 'move' => '1', 'restart' => '1', 'restart_mode' => '1'));
 
 /* Add multiselect for pollers */
 $attrPoller = array(

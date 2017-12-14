@@ -508,9 +508,10 @@ function autoAcknowledgeServiceStart($key)
     $actions = $centreon->user->access->checkAction("service_acknowledgement");
 
     if ($actions == true || $is_admin) {
-        $comment = "Service Auto Acknowledge by " . $centreon->user->alias . "\n";
+		// /*** MOD EMAINTENANCE ***/
+        $comment = "Service Auto Acknowledge by " . $centreon->user->get_name() . "\n";
         $ressource = preg_split("/\;/", $key);
-        $flg = send_cmd(" ACKNOWLEDGE_SVC_PROBLEM;" . urldecode($ressource[0]) . ";" . urldecode($ressource[1]) . ";1;1;1;" . $centreon->user->alias . ";" . $comment, GetMyHostPoller($pearDB, urldecode($ressource[0])));
+        $flg = send_cmd(" ACKNOWLEDGE_SVC_PROBLEM;" . urldecode($ressource[0]) . ";" . urldecode($ressource[1]) . ";1;1;1;" . $centreon->user->get_name() . ";" . $comment, GetMyHostPoller($pearDB, urldecode($ressource[0])));
         return $flg;
     }
 }
@@ -522,7 +523,7 @@ function autoAcknowledgeServiceStop($key)
     $actions = $centreon->user->access->checkAction("service_disacknowledgement");
 
     if ($actions == true || $is_admin) {
-        $comment = "Service Auto Acknowledge by " . $centreon->user->alias . "\n";
+        $comment = "Service Auto Acknowledge by " . $centreon->user->get_name() . "\n";
         $ressource = preg_split("/\;/", $key);
         $flg = send_cmd(" REMOVE_SVC_ACKNOWLEDGEMENT;" . urldecode($ressource[0]) . ";" . urldecode($ressource[1]), GetMyHostPoller($pearDB, urldecode($ressource[0])));
         return $flg;
@@ -540,9 +541,9 @@ function autoAcknowledgeHostStart($key)
     $actions = $centreon->user->access->checkAction("host_acknowledgement");
 
     if ($actions == true || $is_admin) {
-        $comment = "Host Auto Acknowledge by " . $centreon->user->alias . "\n";
+        $comment = "Host Auto Acknowledge by " . $centreon->user->get_name() . "\n";
         $ressource = preg_split("/\;/", $key);
-        $flg = send_cmd(" ACKNOWLEDGE_HOST_PROBLEM;" . urldecode($ressource[0]) . ";1;1;1;" . $centreon->user->alias . ";" . $comment, GetMyHostPoller($pearDB, urldecode($ressource[0])));
+        $flg = send_cmd(" ACKNOWLEDGE_HOST_PROBLEM;" . urldecode($ressource[0]) . ";1;1;1;" . $centreon->user->get_name() . ";" . $comment, GetMyHostPoller($pearDB, urldecode($ressource[0])));
         return $flg;
     }
 }
@@ -554,7 +555,7 @@ function autoAcknowledgeHostStop($key)
     $actions = $centreon->user->access->checkAction("host_disacknowledgement");
 
     if ($actions == true || $is_admin) {
-        $comment = "Host Auto Acknowledge by " . $centreon->user->alias . "\n";
+        $comment = "Host Auto Acknowledge by " . $centreon->user->get_name() . "\n";
         $ressource = preg_split("/\;/", $key);
         $flg = send_cmd(" REMOVE_HOST_ACKNOWLEDGEMENT;" . urldecode($ressource[0]), GetMyHostPoller($pearDB, urldecode($ressource[0])));
         return $flg;

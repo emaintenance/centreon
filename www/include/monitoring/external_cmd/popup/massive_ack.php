@@ -96,7 +96,8 @@ $form = new HTML_QuickForm('select_form', 'GET', 'main.php');
 $form->addElement('header', 'title', _("Acknowledge problems"));
 
 $tpl->assign('authorlabel', _("Alias"));
-$tpl->assign('authoralias', $centreon->user->get_alias());
+// /*** MOD EMAINTENANCE ***/
+$tpl->assign('authoralias', $centreon->user->get_name());
 
 $form->addElement('textarea', 'comment', _("Comment"), array("rows"=>"5", "cols"=>"85", "id"=>"popupComment"));
 $form->setDefaults(array("comment" => sprintf(_("Acknowledged by %s"), $centreon->user->alias)));

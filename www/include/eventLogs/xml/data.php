@@ -514,7 +514,10 @@ $req = "SELECT SQL_CALC_FOUND_ROWS ".(!$is_admin ? "DISTINCT" : "")."
     . " acl.service_id = logs.service_id)) "
     . " WHERE acl.group_id IN (".$access->getAccessGroupsString().") AND " : "WHERE ")
     . " logs.ctime > '$start' AND logs.ctime <= '$end' $whereOutput $msg_req";
-
+// /*** MOD EMAINTENANCE ***/
+$req = "SELECT SQL_CALC_FOUND_ROWS DISTINCT logs.* FROM logs WHERE "
+    . " logs.ctime > '$start' AND logs.ctime <= '$end' $whereOutput $msg_req";
+	
 /*
  * Add Host
  */

@@ -1,15 +1,15 @@
 <!-- Start Home -->
 <div id='globalView'>
-    {if $aclParameters == 1}
+
     <div class="toggleEdit">
         <a href="#" title="{$editMode}"><img src="./img/icons/edit_mode.png" class="ico-14"></a>
     </div>
-    {/if}
+    
 
     <!-- Action bar -->
     <div id='actionBar' style="display: none;">
 
-        {if $aclAddView == 1}
+        
         <!-- Button for add a view -->
         <div class="cntn">
             <button class='addView btnAction btc bt_success'>{t}Add view{/t}</button>
@@ -58,7 +58,7 @@
                 <div class="footer_toggle_wrapper"></div>
             </div>
         </div>
-        {/if}
+        
 
         <!-- Button for edit a view -->
         {if $aclEdit == 1}

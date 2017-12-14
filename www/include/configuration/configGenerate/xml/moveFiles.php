@@ -215,7 +215,8 @@ try {
                             )
                         );
                     } else {
-                        @chmod(rtrim($centreon->Nagioscfg["cfg_dir"], "/") . '/' . basename($filename), 0664);
+						// /*** MOD EMAINTENANCE ***/
+                        @chmod(rtrim($centreon->Nagioscfg["cfg_dir"], "/") . '/' . basename($filename), 0777);
                     }
                 }
                 /*
@@ -252,7 +253,8 @@ try {
                                     )
                                 );
                             } else {
-                                @chmod(rtrim($centreonBrokerDirCfg, "/") . '/' . basename($fileCfg), 0664);
+								// /*** MOD EMAINTENANCE ***/
+                                @chmod(rtrim($centreonBrokerDirCfg, "/") . '/' . basename($fileCfg), 0777);
                             }
                         }
                     }

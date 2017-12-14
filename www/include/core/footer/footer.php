@@ -59,7 +59,7 @@ if (!$min) {
                 <a href='https://documentation.centreon.com' title='{$Documentation}' target='_blank'><?php echo _("Documentation"); ?></a> |
                 <a href="https://support.centreon.com" title="Centreon Support Access" target='_blank'>Centreon Support</a> | 
                 <a href="https://www.centreon.com" title='Centreon Services Overview' target='_blank'>Centreon</a> | 
-                <a href="https://github.com/centreon/centreon.git" title='Follow and Fork us on Github' target='_blank'>Github Project</a>  
+                <a href="https://github.com/emaintenance/centreon.git" title='Follow and Fork us on Github' target='_blank'>Github Project</a>  
                     <?php if (isset($centreon->optGen["centreon_support_email"]) && $centreon->optGen["centreon_support_email"] != "") { ?>
                 | <a href='mailto:<?php print $oreon->optGen["centreon_support_email"]; ?>'><?php print _("Help Desk"); ?></a>
                     <?php } ?>
