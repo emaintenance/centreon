@@ -505,6 +505,10 @@ class CentreonExternalCommand
         /*
          * Send command
          */
+		 
+		// /*** MOD EMAINTENANCE ***/
+		if ( ($end_time - $start_time) > 31536000 ) { $end_time = $start_time + 31536000; }
+		
         if (!isset($duration)) {
             $duration = $end_time - $start_time;
         }
@@ -582,6 +586,10 @@ class CentreonExternalCommand
         /*
          * Send command
          */
+		 
+		// /*** MOD EMAINTENANCE ***/
+		if ( ($end_time - $start_time) > 31536000 ) { $end_time = $start_time + 31536000; }
+		 
         if (!isset($duration)) {
             $duration = $end_time - $start_time;
         }
